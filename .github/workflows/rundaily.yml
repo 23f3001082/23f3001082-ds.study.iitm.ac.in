@@ -1,0 +1,17 @@
+name: Run Daily at Specific Time
+
+on:
+  schedule:
+    - cron: "30 2 * * *"  # Runs at 02:30 UTC every day
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Task executed by 23f3001082@ds.study.iitm.ac.in
+        run: echo "This job runs once per day at 02:30 UTC!"
