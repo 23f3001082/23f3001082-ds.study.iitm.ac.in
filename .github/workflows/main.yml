@@ -1,15 +1,17 @@
-name: Master
+name: Run Every 5 Minutes
+
 on:
-  push:
-    branches:
-      - master
   schedule:
-    - cron: '0 8 1 * *'
+    - cron: "*/5 * * * *"  # Runs every 5 minutes
+  workflow_dispatch: # Allows manual triggering
+
 jobs:
-  build:
+  run-script:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v1
-    - name: Running
-      run: |
-        echo "Running!"
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run a simple command
+        run: echo "This job runs every 5 minutes!"
